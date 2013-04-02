@@ -52,6 +52,7 @@ class Demo extends CI_Controller {
 			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
 			'per_page'		=> $limit,
 			'p_key'			=> 'actor_id',
+			'action'		=> array('position' => 'last'),
 			'action'		=> array('merge' => false),
 			'multi_select'	=> array('active' => false)
 		);

@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '3.3.1v.17-1-177-063';
+$config['encryption_key'] = 'c0deignit3rListview';
 
 /*
 |--------------------------------------------------------------------------

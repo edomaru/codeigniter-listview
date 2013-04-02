@@ -4,7 +4,7 @@ class Demo extends CI_Controller {
 
 	function basic($offset = 0) 
 	{	
-		$limit = 20;
+		$limit = 10;
 		$config['table'] = array(
 			'total_rows' 	=> $this->db->count_all("actor"),
 			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -17,7 +17,7 @@ class Demo extends CI_Controller {
 
 	function basic_link1($offset = 0) 
 	{	
-		$limit = 20;
+		$limit = 10;
 		$config['table'] = array(
 			'total_rows' 	=> $this->db->count_all("actor"),
 			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -31,7 +31,7 @@ class Demo extends CI_Controller {
 
 	function basic_link2($offset = 0) 
 	{	
-		$limit = 20;
+		$limit = 10;
 		$config['table'] = array(
 			'total_rows' 	=> $this->db->count_all("actor"),
 			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -46,7 +46,7 @@ class Demo extends CI_Controller {
 
 	function basic_link3($offset = 0) 
 	{	
-		$limit = 20;
+		$limit = 10;
 		$config['table'] = array(
 			'total_rows' 	=> $this->db->count_all("actor"),
 			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -63,7 +63,7 @@ class Demo extends CI_Controller {
 
 	function just_table($offset = 0) 
 	{
-		$limit = 20;
+		$limit = 10;
 		$config['table'] = array(
 			'attr'			=> array('width' => '700'),
 			'total_rows' 	=> $this->db->count_all("actor"),
@@ -80,7 +80,7 @@ class Demo extends CI_Controller {
 
 	function table_filter($offset = 0) 
 	{
-		$limit = 20;
+		$limit = 10;
 		
 		$this->load->library("listview");
 		$result = $this->listview->filter('actor', (int) $limit, (int) $offset);
@@ -136,7 +136,7 @@ class Demo extends CI_Controller {
 	
 	function table_form($offset = 0) 
 	{
-		$limit = 20;
+		$limit = 10;
 		
 		$this->load->library("listview");
 		$result = $this->get_category_film($limit, (int) $offset);

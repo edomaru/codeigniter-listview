@@ -18,7 +18,7 @@ Usage
 ```php
 function basic($offset = 0) 
 {	
-	$limit = 20;
+	$limit = 10;
 	$config['table'] = array(
 		'total_rows' 	=> $this->db->count_all("actor"),
 		'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -35,7 +35,7 @@ function basic($offset = 0)
 ```php
 function basic_link1($offset = 0) 
 {	
-	$limit = 20;
+	$limit = 10;
 	$config['table'] = array(
 		'total_rows' 	=> $this->db->count_all("actor"),
 		'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -54,7 +54,7 @@ function basic_link1($offset = 0)
 ```php
 function basic_link3($offset = 0) 
 {	
-	$limit = 20;
+	$limit = 10;
 	$config['table'] = array(
 		'total_rows' 	=> $this->db->count_all("actor"),
 		'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
@@ -73,7 +73,7 @@ function basic_link3($offset = 0)
 ```php
 function table_filter($offset = 0) 
 {
-	$limit = 20;
+	$limit = 10;
 	
 	$this->load->library("listview");
 	$result = $this->listview->filter('actor', (int) $limit, (int) $offset);

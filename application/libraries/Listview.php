@@ -106,10 +106,13 @@ class Listview {
             if (! $this->search_form['base_url'] ) {
             	$this->search_form['base_url']		= $this->pagination['base_url'];  
             }
-            	            
+            	       
+			if ( ! $this->table['total_rows'] && is_object($this->table['query']) ) {
+				$this->table['total_rows'] = $this->table['query']->num_rows();
+			}
             $this->show_record['total_rows'] 	= $this->pagination['total_rows'] = $this->table['total_rows'];
-            $this->show_record['per_page'] 		= $this->table['per_page'];
-
+            $this->show_record['per_page'] 		= $this->pagination['per_page']  = $this->table['per_page'];
+			
 			// if no record found, show message
 		    if ( ! $this->table['total_rows'] ) {
 		    	$this->ci->lang->load("listview_msg");
@@ -512,6 +515,7 @@ class Listview {
 	{    
 		$this->ci->load->library("pagination");
 		$this->ci->pagination->initialize($this->pagination);
+		//print_r($this->pagination);
 		return $this->ci->pagination->create_links();
 	}
 

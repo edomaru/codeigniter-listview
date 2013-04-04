@@ -14,7 +14,7 @@ $config['default'] = array(
 	'table' => array(
 		/*'action'			=> array(
 			'attr' => array('style' => 'width:40px;'),
-			'position' => 'first', #last | first | none
+			'position' => 'first', 
 			'merge' => true, 
 			'label' => 'Aksi',
 			'links'	=> array(

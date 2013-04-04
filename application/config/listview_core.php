@@ -52,7 +52,7 @@ $config['core'] = array(
 			'label' => 'Action',
 			'links'	=> array(
 				'edit'      => array('link_point' => 'href', 'attr' => array('title' => 'Edit')),
-    			'delete'    => array('link_point' => 'href', 'attr' => array('title' => 'Delete'))
+    			'delete'    => array('link_point' => 'href', 'attr' => array('title' => 'Delete', 'onclick' => "javascript:return confirm('Anda yakin akan menghapus data ini ?')"))
 			)
 		),
 
@@ -92,13 +92,9 @@ $config['core'] = array(
 		'filters' => null,
 		'base_url' => "",
 		"data" => array()		
-	),
-	/*'toolbar' => array(
-		'top' => null,
-		'bottom' => null
-	)*/
+	)
 );
 
-/* End of file general.php */
+/* End of file listview_core.php */
 /* Location: ./application/config/listview_core.php */
 

@@ -19,13 +19,7 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		/*$this->config->load("listview_default");
-		$this->config->load("listview_core");
-		$theme = $this->config->item("theme") || "mytheme";
-		echo $theme;
-		*/
-		$data['test'] = "You";
-		$this->load->set_theme("jmc")->view('hallo', $data);
+		$this->load->view('welcome_message');
 	}
 }
 

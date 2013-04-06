@@ -7,10 +7,11 @@ It also suport displaying images, links and form elements in table rows.
 Instalation
 ---
 
-1. copy config/listview_core.php and config/listview_default.php to your config folder
-2. copy helpers/listview_helper.php to your helpers folder
-3. copy libraries/listview.php to your libraries folder
-4. copy views/_listview folder to your views folder
+1. put listview_core.php and listview_default.php to your application/config folder
+2. put listview_helper.php to your application/helpers folder
+3. put listview.php to your application/libraries folder
+4. put views/_listview folder to your views folder
+5. put listview_msg_lang.php to your application/language/english
 
 Usage
 ---

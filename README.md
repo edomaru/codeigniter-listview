@@ -12,6 +12,7 @@ Instalation
 3. put listview.php to your application/libraries folder
 4. put views/_listview folder to your views folder
 5. put listview_msg_lang.php to your application/language/english
+6. put MY_Loader.php to your application/core directory
 
 Usage
 ---

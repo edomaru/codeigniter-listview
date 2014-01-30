@@ -6,8 +6,8 @@ class Demo extends CI_Controller {
 	{	
 		$limit = 10;
 		$config['table'] = array(
-			'total_rows' 	=> $this->db->count_all("actor"),
-			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
+			'total_rows' 	=> $this->db->count_all("contacts"),
+			'query' 		=> $this->db->limit($limit, (int) $offset)->get("contacts"),
 			'per_page'		=> $limit			
 		);
 		
@@ -19,10 +19,10 @@ class Demo extends CI_Controller {
 	{	
 		$limit = 10;
 		$config['table'] = array(
-			'total_rows' 	=> $this->db->count_all("actor"),
-			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
+			'total_rows' 	=> $this->db->count_all("contacts"),
+			'query' 		=> $this->db->limit($limit, (int) $offset)->get("contacts"),
 			'per_page'		=> $limit,
-			'p_key'			=> 'actor_id'
+			'p_key'			=> 'id'
 		);
 		
 		$this->load->library("listview", $config);
@@ -33,10 +33,10 @@ class Demo extends CI_Controller {
 	{	
 		$limit = 10;
 		$config['table'] = array(
-			'total_rows' 	=> $this->db->count_all("actor"),
-			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
+			'total_rows' 	=> $this->db->count_all("contacts"),
+			'query' 		=> $this->db->limit($limit, (int) $offset)->get("contacts"),
 			'per_page'		=> $limit,
-			'p_key'			=> 'actor_id',
+			'p_key'			=> 'id',
 			'action'		=> array('position' => 'last')
 		);
 		
@@ -48,10 +48,10 @@ class Demo extends CI_Controller {
 	{	
 		$limit = 10;
 		$config['table'] = array(
-			'total_rows' 	=> $this->db->count_all("actor"),
-			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
+			'total_rows' 	=> $this->db->count_all("contacts"),
+			'query' 		=> $this->db->limit($limit, (int) $offset)->get("contacts"),
 			'per_page'		=> $limit,
-			'p_key'			=> 'actor_id',
+			'p_key'			=> 'id',
 			'action'		=> array('position' => 'last'),
 			'action'		=> array('merge' => false),
 			'multi_select'	=> array('active' => false)
@@ -66,12 +66,12 @@ class Demo extends CI_Controller {
 		$limit = 10;
 		$config['table'] = array(
 			'attr'			=> array('width' => '700'),
-			'total_rows' 	=> $this->db->count_all("actor"),
-			'query' 		=> $this->db->limit($limit, (int) $offset)->get("actor"),
+			'total_rows' 	=> $this->db->count_all("contacts"),
+			'query' 		=> $this->db->limit($limit, (int) $offset)->get("contacts"),
 			'per_page'		=> $limit,
-			'p_key'			=> 'actor_id',
+			'p_key'			=> 'id',
 			'numbering'		=> array('active' => false),
-			'hidden_fields'	=> array('actor_id', 'last_update')
+			'hidden_fields'	=> array('id', 'last_update')
 		);
 		
 		$this->load->library("listview", $config);
@@ -83,16 +83,16 @@ class Demo extends CI_Controller {
 		$limit = 10;
 		
 		$this->load->library("listview");
-		$result = $this->listview->filter('actor', (int) $limit, (int) $offset);
+		$result = $this->listview->filter('contacts', (int) $limit, (int) $offset);
 		
 		$config['table'] = array(
 			'attr'			=> array('width' => '700'),
 			'total_rows' 	=> $result['total_rows'],
 			'query' 		=> $result['query'],
 			'per_page'		=> $limit,
-			'p_key'			=> 'actor_id',
+			'p_key'			=> 'id',
 			'numbering'		=> array('active' => false),
-			'hidden_fields'	=> array('actor_id', 'last_update')
+			'hidden_fields'	=> array('id', 'last_update')
 		);
 		
 		$this->listview->initialize($config);		
@@ -102,10 +102,9 @@ class Demo extends CI_Controller {
 	private function get_category_film($limit, $offset) {
 		lvw_db_filter();
 
-		$data['query'] = $this->db->select("SQL_CALC_FOUND_ROWS `fi`.`film_id`, `title`, `category_id`, `description`, `release_year`, `language_id`", false)
-							 ->from("film fi")
-							 ->join("film_category fc", "fi.film_id = fc.film_id")
-							 ->order_by("fi.film_id")
+		$data['query'] = $this->db->select("SQL_CALC_FOUND_ROWS `c`.`id`, `name`, `category_id`, `address`", false)
+							 ->from("contacts c")							 
+							 ->order_by("c.id")
 							 ->limit($limit, $offset)
 							 ->get();
 		$data['total_rows'] = $this->db->query("SELECT FOUND_ROWS() AS total_rows")->row()->total_rows;
@@ -115,9 +114,9 @@ class Demo extends CI_Controller {
 
 	private function get_categories() {
 		$options = array();
-		$query = $this->db->get("category");
+		$query = $this->db->get("categories");
 		foreach ($query->result() as $row) {
-			$options[$row->category_id] = $row->name;
+			$options[$row->category_id] = $row->category;
 		}
 
 		return $options;
@@ -146,10 +145,10 @@ class Demo extends CI_Controller {
 			'total_rows' 	=> $result['total_rows'],
 			'query' 		=> $result['query'],
 			'per_page'		=> $limit,
-			'p_key'			=> 'film_id',
+			'p_key'			=> 'id',
 			'numbering'		=> array('active' => false),
 			'fields'		=> array(
-				'title' => array('label' => 'Judul Film',
+				'name' => array('label' => 'Nama',
 					'format' => array('form' => array(
 							'type' => 'form_input',
 							'attr' => array('class' => 'inputbox')
@@ -163,18 +162,9 @@ class Demo extends CI_Controller {
 						)
 					)
 				),
-				'description' => array( 'label' => 'Deskripsi',
+				'address' => array( 'label' => 'Alamat',
 					'format' => array(
 						'limit_text' => array('limit' => 100)
-					)
-				),
-				'release_year' => 'Tahun Rilis',
-				'language_id' => array('label' => 'Bahasa',
-					'format'  => array(
-						'form' => array(
-							'type' => 'form_dropdown',
-							'options' => $this->get_languages()
-						)
 					)
 				)
 			)
